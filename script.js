@@ -9,8 +9,6 @@ let tasks = [];
 let searchTerm = "";
 let statusFilter = "all";
 
-
-
 const savedTasks = localStorage.getItem("tasks");
 if (savedTasks) {
   tasks = JSON.parse(savedTasks);
@@ -59,7 +57,6 @@ function displayTasks() {
 
     return matchesSearch && matchesStatus;
   });
-
 
   filteredTasks.forEach(function (task) {
     const taskElement = document.createElement("div");
@@ -138,7 +135,7 @@ function deleteTask(taskId) {
     return task.id !== taskId;
   });
 
-   saveTasks();
+  saveTasks();
   displayTasks();
   updateDashboard();
 }
@@ -170,7 +167,7 @@ function editTask(taskId) {
   task.description = newDescription;
 
   task.title = newTitle;
- saveTasks();
+  saveTasks();
   displayTasks();
   updateDashboard();
 }
@@ -193,7 +190,7 @@ function toggleStatus(taskId) {
   } else {
     task.status = "pending";
   }
- saveTasks();
+  saveTasks();
   displayTasks();
   updateDashboard();
 }
@@ -206,31 +203,27 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-//this to diplay the saved task 
+//this to diplay the saved task
 displayTasks();
 updateDashboard();
 
-
 //============//////////////
-//Search   functionality in our task management system 
+//Search   functionality in our task management system
 //////////////////////////////////
 
-//first get the search bar 
+//first get the search bar
 
 const searchTask = document.getElementById("searchTask");
 
-
 // add an event to the searchTask var
-searchTask.addEventListener("input",function(){
+searchTask.addEventListener("input", function () {
   console.log(searchTask.value);
 });
 
-
-searchTask.addEventListener("input",function(){
+searchTask.addEventListener("input", function () {
   searchTerm = searchTask.value.toLowerCase();
   displayTasks();
-})
-
+});
 
 const filterStatus = document.getElementById("filterStatus");
 
@@ -240,19 +233,14 @@ filterStatus.addEventListener("change", function () {
   displayTasks();
 });
 
-
-
-
-const student ={
-  namee:"Hanan",
-  age:23,
-  department:"CS",
-  semester:4
+const student = {
+  namee: "Hanan",
+  age: 23,
+  department: "CS",
+  semester: 4,
 };
 
-
-const {namee,age,department,semester} = student;
-
+const { namee, age, department, semester } = student;
 
 console.log(namee);
 
@@ -260,87 +248,74 @@ console.log(age);
 console.log(semester);
 console.log(department);
 
-
 // arrAY destructuring
 
+const colors = ["red", "Blue", "Red"];
 
-
-const colors = ["red","Blue","Red"];
-
-const [fourth,second,third] = colors;
+const [fourth, second, third] = colors;
 
 console.log(fourth);
 console.log(second);
 console.log(third);
 
+const technologies = ["HTML", "CSS", "OOP"];
 
-const technologies = ["HTML","CSS","OOP"];
-
-const [one,two,three] = technologies;
+const [one, two, three] = technologies;
 
 console.log(one);
 console.log(two);
 console.log(three);
 
+// spread operator expand and copies the vlaue form the  array or object
 
+const teacher = ["Hanan", "subhan", "Ali", "Haris"];
 
-// spread operator expand and copies the vlaue form the  array or object 
-
-const teacher = ["Hanan", "subhan","Ali","Haris"];
-
-const newteahcer =[...teacher,"Asad","Hamza","Maryam "];
+const newteahcer = [...teacher, "Asad", "Hamza", "Maryam "];
 
 console.log(newteahcer);
 
+const skills = ["forntend", "backend", "FullStack"];
 
-const skills = ["forntend","backend","FullStack"];
-
-const newskill =["Mobile dev","Ai Automation",...skills];
+const newskill = ["Mobile dev", "Ai Automation", ...skills];
 
 console.log(newskill);
 
+//reset operator
 
-//reset operator 
-
-
-const number =[10,20,30,40,50];
+const number = [10, 20, 30, 40, 50];
 
 const [first, ...remaining] = number;
 
 console.log(first);
 console.log(remaining);
 
-
 //map
 
-const doubled = number.map(function(number){
+const doubled = number.map(function (number) {
   return number * 2;
 });
 
 console.log(doubled);
- 
 
-const value = [2,3,4,5,6,7,8,9];
+const value = [2, 3, 4, 5, 6, 7, 8, 9];
 
-const square = value.map(value => value * 2);
+const square = value.map((value) => value * 2);
 
 console.log(value);
 
-
-const students=[
-  {name:"Ali",age:22},
-  {name:"Subhan",age:42},
-  {name:"Haris",age:12},
+const students = [
+  { name: "Ali", age: 22 },
+  { name: "Subhan", age: 42 },
+  { name: "Haris", age: 12 },
 ];
 
-const stdnames = students.map(students => students.name);
+const stdnames = students.map((students) => students.name);
 
 console.log(stdnames);
 
+///filter
 
-///filter 
-
-const result = number.filter(number => number > 20);
+const result = number.filter((number) => number > 20);
 
 console.log(result);
 
@@ -350,6 +325,91 @@ const task = [
   { title: "Build project", status: "pending" },
 ];
 
-const gettask = task.filter(task => task.status === "pending");
+const gettask = task.filter((task) => task.status === "pending");
 
 console.log(gettask);
+
+/// lesson arrow functions
+
+const add = (a, b) => {
+  return a * b;
+};
+console.log(add(10, 20));
+
+const hello = () => {
+  console.log("Hello this is function without parameters");
+};
+
+hello();
+
+// task create arrow function which receive age and return true if the age is above 18
+
+const isAdult = (age) => {
+  if (age > 18) {
+    console.log("person is adult");
+  } else {
+    console.log("under 18");
+  }
+};
+
+isAdult(1);
+
+const Adult = (age) => age >= 18;
+
+console.log(Adult(17));
+
+// Task 3 — React-style practice
+const taskk = [
+  { title: "Learn JavaScript", completed: true },
+  { title: "Learn React", completed: false },
+  { title: "Build Project", completed: false },
+];
+
+const gettasks = taskk.filter((taskk) => !taskk.completed);
+
+console.log(gettask);
+
+//template literals
+
+const names = "Hanan";
+const skill = "js";
+const level = "Begginer";
+
+const person = `my name is ${names} my skill is ${skill} and level is ${level}`;
+
+console.log(person);
+
+const product = "Laptop";
+const price = 800;
+const quantity = 2;
+
+const templateliteral = `i bought ${quantity} laptop for a total price of ${price * quantity}`;
+
+console.log(templateliteral);
+
+// Task 3::Create a message that calculates the percentage
+
+const completedTaskk = 7;
+const totalTaskk = 10;
+
+const percentage = `your complete ${(completedTaskk / totalTaskk) *100} % of your tasks`;
+
+console.log(percentage);
+
+
+// default parameters
+
+
+function calculateprice(price,qunatity =1){
+  return price * qunatity;
+};
+console.log(calculateprice(10,3));
+console.log(calculateprice(100));
+
+const createUser = (name, role = "User") {
+   return {
+   name : name, role :role
+};
+}
+
+console.log(createUser("Hanan"));
